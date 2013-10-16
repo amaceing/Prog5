@@ -80,4 +80,10 @@ class Cylinder extends Container {
                 (_length - (2 * getWallThickness()));
         return intVol;
     }
+
+    public String toString() {
+        return super.toString() +
+               "Radius: " + _radius + "\n" +
+               "Length: " + _length + "\n";
+    }
 }
