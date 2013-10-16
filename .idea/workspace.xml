@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ec9819b0-2315-4fe3-8f4c-9c04f967f642" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-    </list>
+    <list default="true" id="ec9819b0-2315-4fe3-8f4c-9c04f967f642" name="Default" comment="" />
     <ignored path="Prog5.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="ec9819b0-2315-4fe3-8f4c-9c04f967f642" time="1381907540279" ignored="false" />
-    <file path="/program5.java" changelist="ec9819b0-2315-4fe3-8f4c-9c04f967f642" time="1381907496414" ignored="false" />
+    <file path="/Dummy.txt" changelist="ec9819b0-2315-4fe3-8f4c-9c04f967f642" time="1381908044195" ignored="false" />
+    <file path="/program5.java" changelist="ec9819b0-2315-4fe3-8f4c-9c04f967f642" time="1381907753987" ignored="false" />
+    <file path="$PROJECT_DIR$/.idea/workspace.xml" changelist="ec9819b0-2315-4fe3-8f4c-9c04f967f642" time="1381908023542" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,9 +70,9 @@
       <file leaf-file-name="program5.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/program5.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="18" column="41" selection-start="563" selection-end="563" vertical-scroll-proportion="-2.800403">
+            <state line="10" column="38" selection-start="221" selection-end="221" vertical-scroll-proportion="-3.473804">
               <folding>
-                <element signature="e#0#3716#0" expanded="true" />
+                <element signature="e#0#3740#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -343,14 +342,18 @@
       <created>1381907547395</created>
       <updated>1381907547395</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="tests implemented classes">
+      <created>1381908048116</created>
+      <updated>1381908048116</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="false" />
     <layout>
-      <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.41870824" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.48218262" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -363,7 +366,7 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.114727855" sideWeight="0.58129174" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.114727855" sideWeight="0.5178174" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.37973273" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -414,7 +417,7 @@
     <option name="WRAP_WHEN_TYPING_REACHES_RIGHT_MARGIN" value="false" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="implements RectangularBox class" />
+    <option name="LAST_COMMIT_MESSAGE" value="tests implemented classes" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -431,6 +434,7 @@
     <MESSAGE value="implements Container class" />
     <MESSAGE value="implements Cylinder class" />
     <MESSAGE value="implements RectangularBox class" />
+    <MESSAGE value="tests implemented classes" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -442,9 +446,9 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/program5.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="41" selection-start="563" selection-end="563" vertical-scroll-proportion="-2.800403">
+        <state line="10" column="38" selection-start="221" selection-end="221" vertical-scroll-proportion="-3.473804">
           <folding>
-            <element signature="e#0#3716#0" expanded="true" />
+            <element signature="e#0#3740#0" expanded="true" />
           </folding>
         </state>
       </provider>
