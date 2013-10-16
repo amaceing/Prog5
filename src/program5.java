@@ -8,7 +8,7 @@ public class program5 {
     Scanner console = new Scanner(System.in);
 
     public static void main(String[] args) {
-        Cylinder test = new Cylinder(5, 4, 3, 2);
+        Cylinder test = new Cylinder(2, 4, 6, 7);
         System.out.println(test);
         RectangularBox test1 = new RectangularBox(5, 4, 3, 2, 1);
         System.out.println(test1);
@@ -16,7 +16,7 @@ public class program5 {
         collect[0] = test;
         collect[1] = test1;
         for (int i = 0; i < collect.length; i++) {
-            System.out.println(collect[i]);
+            System.out.println(collect[i].computeInteriorVolume());
         }
     }
 
@@ -85,7 +85,7 @@ class Cylinder extends Container {
 
     public double computeInteriorVolume() {
         double intVol = 0.0;
-        intVol = Math.PI * Math.pow(_radius * getWallThickness(), 2) *
+        intVol = Math.PI * Math.pow(_radius - getWallThickness(), 2) *
                 (_length - (2 * getWallThickness()));
         return intVol;
     }
