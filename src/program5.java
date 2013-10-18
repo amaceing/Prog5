@@ -16,7 +16,7 @@ public class program5 {
         collect[0] = test;
         collect[1] = test1;
         for (int i = 0; i < collect.length; i++) {
-            System.out.println(collect[i].computeInteriorVolume());
+            System.out.println(collect[i].wallWeight());
         }
     }
 
@@ -141,5 +141,58 @@ class RectangularBox extends Container {
                "Height: " + _height + "\n" +
                "Width: " + _width + "\n" +
                "Length: " + _length + "\n";
+    }
+}
+
+class TrapezoidalBox extends Container {
+    private double _height;
+    private double _width;
+    private double _upperLength;
+    private double _lowerLength;
+
+    public TrapezoidalBox(double wallThickness, double wallDensity, double height,
+                          double width, double upperLength, double lowerLength) {
+        super(wallThickness, wallDensity);
+        _height = height;
+        _width = width;
+        _upperLength = upperLength;
+        _lowerLength = lowerLength;
+    }
+
+    public double getHeight() {
+        return _height;
+    }
+
+    public double getWidth() {
+        return _width;
+    }
+
+    public double getUpperLength() {
+        return _upperLength;
+    }
+
+    public double getLowerLength() {
+        return _lowerLength;
+    }
+
+    public double computeExteriorVolume() {
+        double extVol = 0.0;
+        extVol = (1.0/2.0) * (_upperLength + _lowerLength) * _width * _height;
+        return extVol;
+    }
+
+    public double computeInteriorVolume() {
+        double intVol = 0.0;
+        intVol = (1.0/2.0) * (_upperLength - (2* getWallThickness()) + _lowerLength) *
+                 _width * _height;
+        return intVol;
+    }
+
+    public String toString() {
+        return super.toString() +
+               "Height: " + _height + "\n" +
+               "Width: " + _width + "\n" +
+               "Upper Length: " + _upperLength + "\n" +
+               "Lower Length: " + _lowerLength + "\n";
     }
 }
