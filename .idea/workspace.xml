@@ -2,12 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ec9819b0-2315-4fe3-8f4c-9c04f967f642" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/program5.java" afterPath="$PROJECT_DIR$/src/program5.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Prog5.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="ec9819b0-2315-4fe3-8f4c-9c04f967f642" time="1382212810075" ignored="false" />
+    <file path="/Dummy.txt" changelist="ec9819b0-2315-4fe3-8f4c-9c04f967f642" time="1382214333102" ignored="false" />
     <file path="/program5.java" changelist="ec9819b0-2315-4fe3-8f4c-9c04f967f642" time="1382214247981" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -72,7 +71,7 @@
       <file leaf-file-name="program5.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/program5.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="226" column="41" selection-start="5843" selection-end="5843" vertical-scroll-proportion="1.1251956">
+            <state line="226" column="41" selection-start="5843" selection-end="5843" vertical-scroll-proportion="1.0719875">
               <folding>
                 <element signature="e#0#5852#0" expanded="true" />
               </folding>
@@ -356,7 +355,11 @@
       <created>1382054516958</created>
       <updated>1382054516958</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="implements Contents  class">
+      <created>1382214339155</created>
+      <updated>1382214339156</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -427,7 +430,7 @@
     <option name="WRAP_WHEN_TYPING_REACHES_RIGHT_MARGIN" value="false" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="implements TrapezoidalBox class" />
+    <option name="LAST_COMMIT_MESSAGE" value="implements Contents  class" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -447,6 +450,7 @@
     <MESSAGE value="tests implemented classes" />
     <MESSAGE value="changes UML" />
     <MESSAGE value="implements TrapezoidalBox class" />
+    <MESSAGE value="implements Contents  class" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -485,7 +489,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/program5.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="226" column="41" selection-start="5843" selection-end="5843" vertical-scroll-proportion="1.1251956">
+        <state line="226" column="41" selection-start="5843" selection-end="5843" vertical-scroll-proportion="1.0719875">
           <folding>
             <element signature="e#0#5852#0" expanded="true" />
           </folding>
