@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ec9819b0-2315-4fe3-8f4c-9c04f967f642" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-    </list>
+    <list default="true" id="ec9819b0-2315-4fe3-8f4c-9c04f967f642" name="Default" comment="" />
     <ignored path="Prog5.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="ec9819b0-2315-4fe3-8f4c-9c04f967f642" time="1382214333102" ignored="false" />
-    <file path="/program5.java" changelist="ec9819b0-2315-4fe3-8f4c-9c04f967f642" time="1382214247981" ignored="false" />
+    <file path="/Dummy.txt" changelist="ec9819b0-2315-4fe3-8f4c-9c04f967f642" time="1382214951723" ignored="false" />
+    <file path="/program5.java" changelist="ec9819b0-2315-4fe3-8f4c-9c04f967f642" time="1382214840532" ignored="false" />
+    <file path="$PROJECT_DIR$/.idea/workspace.xml" changelist="ec9819b0-2315-4fe3-8f4c-9c04f967f642" time="1382214951257" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,9 +70,9 @@
       <file leaf-file-name="program5.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/program5.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="226" column="41" selection-start="5843" selection-end="5843" vertical-scroll-proportion="1.0719875">
+            <state line="36" column="61" selection-start="1014" selection-end="1014" vertical-scroll-proportion="0.6791862">
               <folding>
-                <element signature="e#0#5852#0" expanded="true" />
+                <element signature="e#0#6560#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -359,14 +358,18 @@
       <created>1382214339155</created>
       <updated>1382214339156</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="implements abstract RollingStock class">
+      <created>1382214956101</created>
+      <updated>1382214956101</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
-      <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2594655" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2594655" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -430,7 +433,7 @@
     <option name="WRAP_WHEN_TYPING_REACHES_RIGHT_MARGIN" value="false" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="implements Contents  class" />
+    <option name="LAST_COMMIT_MESSAGE" value="implements abstract RollingStock class" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -451,6 +454,7 @@
     <MESSAGE value="changes UML" />
     <MESSAGE value="implements TrapezoidalBox class" />
     <MESSAGE value="implements Contents  class" />
+    <MESSAGE value="implements abstract RollingStock class" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -464,7 +468,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding>
-            <element signature="e#0#5852#0" expanded="true" />
+            <element signature="e#0#6560#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -473,7 +477,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding>
-            <element signature="e#0#5852#0" expanded="true" />
+            <element signature="e#0#6560#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -482,16 +486,16 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding>
-            <element signature="e#0#5852#0" expanded="true" />
+            <element signature="e#0#6560#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/program5.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="226" column="41" selection-start="5843" selection-end="5843" vertical-scroll-proportion="1.0719875">
+        <state line="36" column="61" selection-start="1014" selection-end="1014" vertical-scroll-proportion="0.6791862">
           <folding>
-            <element signature="e#0#5852#0" expanded="true" />
+            <element signature="e#0#6560#0" expanded="true" />
           </folding>
         </state>
       </provider>
