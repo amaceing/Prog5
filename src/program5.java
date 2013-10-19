@@ -9,13 +9,14 @@ public class program5 {
 
     public static void main(String[] args) {
         Cylinder test = new Cylinder(2, 4, 6, 7);
-        System.out.println(test);
         RectangularBox test1 = new RectangularBox(5, 4, 3, 2, 1);
-        System.out.println(test1);
-        Container[] collect = new Container[2];
+        TrapezoidalBox test2 = new TrapezoidalBox(6, 5, 4, 3, 2, 1);
+        Container[] collect = new Container[3];
         collect[0] = test;
         collect[1] = test1;
+        collect[2] = test2;
         for (int i = 0; i < collect.length; i++) {
+            System.out.println(collect[i]);
             System.out.println(collect[i].wallWeight());
         }
     }
@@ -194,5 +195,35 @@ class TrapezoidalBox extends Container {
                "Width: " + _width + "\n" +
                "Upper Length: " + _upperLength + "\n" +
                "Lower Length: " + _lowerLength + "\n";
+    }
+}
+
+class Contents {
+    private String _type;
+    private double _density;
+    private double _value;
+
+    public Contents(String type, double density, double value) {
+        _type = type;
+        _density - density;
+        _value = value;
+    }
+
+    public String getType() {
+        return _type;
+    }
+
+    public double getDensity() {
+        return _density;
+    }
+
+    public double getValue() {
+        return _value;
+    }
+
+    public String toString() {
+        return "Type: " + _type + "\n" +
+               "Denisty :" + _density + "\n" +
+               "Value: " + _value + "\n";
     }
 }
