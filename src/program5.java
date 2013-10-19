@@ -72,6 +72,49 @@ class Engine extends RollingStock {
     }
 }
 
+class FreightCar extends RollingStock {
+    private Contents _contents;
+    private Container _container;
+    private double _loadFactor;
+
+    public FreightCar(String ownerName, int idNum, double baseFrameWeight,
+                      Contents contents, Container container, double loadFactor) {
+        super(ownerName, idNum, baseFrameWeight);
+        _contents = contents;
+        _container = container;
+        _loadFactor = loadFactor;
+    }
+
+    public double getLoadFactor() {
+        return _loadFactor;
+    }
+
+    public void setLoadFactor(double newLoadFactor) {
+        _loadFactor = newLoadFactor;
+    }
+
+    public double computeTotalWeight() {
+        double totalWeight = 0.0;
+        totalWeight = _container.wallWeight() + (_contents.getDensity() *
+                                                _container.computeInteriorVolume());
+        return totalWeight;
+    }
+
+    public double computeTotalValue() {
+        double totalValue = 0.0;
+        totalValue = _contents.getValue() * ((_container.computeInteriorVolume() *
+                                            _loadFactor) * _contents.getDensity());
+        return totalValue;
+    }
+
+    public String toString() {
+        return super.toString() +
+               "Contents: " + _contents.getType() + "\n" +
+               "Container: " + _container + "\n" +
+               "Load factor: " + _loadFactor + "\n";
+    }
+}
+
 abstract class Container {
     private double _wallThickness;
     private double _wallDensity;
