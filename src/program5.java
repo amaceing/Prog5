@@ -23,6 +23,36 @@ public class program5 {
 
 }
 
+abstract class RollingStock {
+    private String _ownerName;
+    private int _idNum;
+    private double _baseFrameWeight;
+
+    public RollingStock(String ownerName, int idNum, double baseFrameWeight) {
+        _ownerName = ownerName;
+        _idNum = idNum;
+        _baseFrameWeight = baseFrameWeight;
+    }
+
+    public String getOwnerName() {
+        return _ownerName;
+    }
+
+    public int getIDNum() {
+        return _idNum;
+    }
+
+    public double getBaseFraeWeight() {
+        return _baseFrameWeight;
+    }
+
+    public String toString() {
+        return "Owner: " + _ownerName + "\n" +
+               "ID: #" + _idNum + "\n" +
+               "Base Frame Weight: " + _baseFrameWeight + "\n";
+    }
+}
+
 abstract class Container {
     private double _wallThickness;
     private double _wallDensity;
@@ -205,7 +235,7 @@ class Contents {
 
     public Contents(String type, double density, double value) {
         _type = type;
-        _density - density;
+        _density = density;
         _value = value;
     }
 
