@@ -53,6 +53,25 @@ abstract class RollingStock {
     }
 }
 
+class Engine extends RollingStock {
+    private double _pullingCapacity;
+
+    public Engine(String ownerName, int idNum, double baseFrameWeight,
+                  double pullingCapacity) {
+        super(ownerName, idNum, baseFrameWeight);
+        _pullingCapacity = pullingCapacity;
+    }
+
+    public double getPullingCapacity() {
+        return _pullingCapacity;
+    }
+
+    public String toString() {
+        return super.toString() +
+               "Pulling capacity: " + _pullingCapacity + "\n";
+    }
+}
+
 abstract class Container {
     private double _wallThickness;
     private double _wallDensity;
