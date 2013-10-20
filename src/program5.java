@@ -5,20 +5,57 @@ import java.util.*;
 
 public class program5 {
 
-    Scanner console = new Scanner(System.in);
+    public static Scanner console = new Scanner(System.in);
 
     public static void main(String[] args) {
-        Cylinder test = new Cylinder(2, 4, 6, 7);
-        RectangularBox test1 = new RectangularBox(5, 4, 3, 2, 1);
-        TrapezoidalBox test2 = new TrapezoidalBox(6, 5, 4, 3, 2, 1);
-        Container[] collect = new Container[3];
-        collect[0] = test;
-        collect[1] = test1;
-        collect[2] = test2;
-        for (int i = 0; i < collect.length; i++) {
-            System.out.println(collect[i]);
-            System.out.println(collect[i].wallWeight());
-        }
+        int railCond = 0;
+        printIntro();
+        System.out.println();
+        railCond = getRailConditions();
+        System.out.println();
+        Engine trainEngine = constructAnEngine();
+        System.out.println(trainEngine);
+
+    }
+
+    public static void printIntro() {
+        System.out.println("This program is designed to help you build a train!");
+        System.out.println("The program will help you decide which cars to include \n" +
+                           "in each trip as well as the details of the train such as \n" +
+                           "the engine and aspects of each car.");
+    }
+
+    public static int getRailConditions() {
+        int maxLoad = 0;
+        System.out.println("Please enter the maximum acceptable load of a single car");
+        System.out.println("that may pass over the Conemaugh River bridge safely!");
+        System.out.print("Maximum acceptable load for a car (lbs.): ");
+        maxLoad = console.nextInt();
+        return maxLoad;
+    }
+
+    public static Engine constructAnEngine() {
+        Engine newEngine = null;
+        String ownerName = "";
+        int idNum = 0;
+        double baseFrameWeight = 0.0;
+        double pullingCapacity = 0.0;
+        System.out.print("Please enter the name of the Owner: ");
+        ownerName = console.next();
+        System.out.println();
+        System.out.println("Please enter the ID number of the Engine.");
+        System.out.print("ID #: ");
+        idNum = console.nextInt();
+        System.out.println();
+        System.out.print("Please enter the weight of the base frame (lbs.): ");
+        baseFrameWeight = console.nextDouble();
+        System.out.println();
+        System.out.println("Please enter the pulling capacity of the engine.");
+        System.out.print("Pulling Capacity (lbs.): ");
+        pullingCapacity = console.nextDouble();
+        System.out.println();
+        newEngine = new Engine(ownerName, idNum, baseFrameWeight, pullingCapacity);
+        return newEngine;
     }
 
 }
@@ -42,7 +79,7 @@ abstract class RollingStock {
         return _idNum;
     }
 
-    public double getBaseFraeWeight() {
+    public double getBaseFrameWeight() {
         return _baseFrameWeight;
     }
 
@@ -68,7 +105,7 @@ class Engine extends RollingStock {
 
     public String toString() {
         return super.toString() +
-               "Pulling capacity: " + _pullingCapacity + "\n";
+               "Pulling capacity: " + _pullingCapacity;
     }
 }
 
@@ -111,7 +148,7 @@ class FreightCar extends RollingStock {
         return super.toString() +
                "Contents: " + _contents.getType() + "\n" +
                "Container: " + _container + "\n" +
-               "Load factor: " + _loadFactor + "\n";
+               "Load factor: " + _loadFactor;
     }
 }
 
@@ -186,7 +223,7 @@ class Cylinder extends Container {
     public String toString() {
         return super.toString() +
                "Radius: " + _radius + "\n" +
-               "Length: " + _length + "\n";
+               "Length: " + _length;
     }
 }
 
@@ -233,7 +270,7 @@ class RectangularBox extends Container {
         return super.toString() +
                "Height: " + _height + "\n" +
                "Width: " + _width + "\n" +
-               "Length: " + _length + "\n";
+               "Length: " + _length;
     }
 }
 
@@ -286,7 +323,7 @@ class TrapezoidalBox extends Container {
                "Height: " + _height + "\n" +
                "Width: " + _width + "\n" +
                "Upper Length: " + _upperLength + "\n" +
-               "Lower Length: " + _lowerLength + "\n";
+               "Lower Length: " + _lowerLength;
     }
 }
 
