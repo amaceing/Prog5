@@ -104,8 +104,7 @@ public class program5 {
             System.out.print("Enter the length of the tank car (ft.): ");
             length = console.nextDouble();
             System.out.println();
-            Cylinder car = new Cylinder(wallThickness, wallDensity, radius, length);
-            container = car;
+            container = new Cylinder(wallThickness, wallDensity, radius, length);
         } else if (carType == 2) {
             System.out.println("You chose to build a box car.");
             System.out.print("Enter the height of the box car (ft.): ");
@@ -117,9 +116,8 @@ public class program5 {
             System.out.print("Enter the length of the box car (ft.): ");
             length = console.nextDouble();
             System.out.println();
-            RectangularBox car = new RectangularBox(wallThickness, wallDensity, height,
+            container = new RectangularBox(wallThickness, wallDensity, height,
                                                     width, length);
-            container = car;
         } else if (carType == 3) {
             System.out.println("You chose to build a hopper car.");
             System.out.print("Enter the height of the hopper car (ft.): ");
@@ -134,9 +132,8 @@ public class program5 {
             System.out.print("Enter the lower length of the hopper car (ft.): ");
             lowerLength = console.nextDouble();
             System.out.println();
-            TrapezoidalBox car = new TrapezoidalBox(wallThickness, wallDensity, height,
+            container = new TrapezoidalBox(wallThickness, wallDensity, height,
                                                     width, upperLength, lowerLength);
-            container = car;
         }
         return container;
     }
