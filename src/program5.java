@@ -9,12 +9,20 @@ public class program5 {
 
     public static void main(String[] args) {
         int railCond = 0;
+        Container container = null;
+        Contents contents = null;
         printIntro();
         System.out.println();
         railCond = getRailConditions();
         System.out.println();
         Engine trainEngine = constructAnEngine();
         System.out.println(trainEngine);
+        System.out.println();
+        container = constructContainer();
+        System.out.println(container);
+        System.out.println();
+        contents = constructContents();
+        System.out.println(contents);
 
     }
 
@@ -40,7 +48,7 @@ public class program5 {
         int idNum = 0;
         double baseFrameWeight = 0.0;
         double pullingCapacity = 0.0;
-        System.out.print("Please enter the name of the Owner: ");
+        System.out.print("Please enter the name of the owner of the Engine: ");
         ownerName = console.next();
         System.out.println();
         System.out.println("Please enter the ID number of the Engine.");
@@ -58,6 +66,132 @@ public class program5 {
         return newEngine;
     }
 
+    public static Container constructContainer() {
+        Container container = null;
+        double wallThickness = 0.0;
+        double wallDensity = 0.0;
+        double radius = 0.0;
+        double length = 0.0;
+        double height = 0.0;
+        double width = 0.0;
+        double upperLength = 0.0;
+        double lowerLength = 0.0;
+        int carType = 0;
+        System.out.println("Which type of car would you like to add?");
+        System.out.println("Choose a car type:");
+        System.out.println("\t1 - Tank car");
+        System.out.println("\t2 - Box Car");
+        System.out.println("\t3 - Hopper car");
+        System.out.print("Car choice: ");
+        carType = console.nextInt();
+        while (carType < 1 || carType > 3) {
+            System.out.println("You didn't choose a valid car type!");
+            System.out.print("Car choice: ");
+            carType = console.nextInt();
+        }
+        System.out.println();
+        System.out.print("Enter the thickness of the walls (ft.): ");
+        wallThickness = console.nextDouble();
+        System.out.println();
+        System.out.print("Enter the wall density: ");
+        wallDensity = console.nextDouble();
+        System.out.println();
+        if (carType == 1) {
+            System.out.println("You chose to build a tank car.");
+            System.out.print("Enter the radius of the tank car (ft.): ");
+            radius = console.nextDouble();
+            System.out.println();
+            System.out.print("Enter the length of the tank car (ft.): ");
+            length = console.nextDouble();
+            System.out.println();
+            Cylinder car = new Cylinder(wallThickness, wallDensity, radius, length);
+            container = car;
+        } else if (carType == 2) {
+            System.out.println("You chose to build a box car.");
+            System.out.print("Enter the height of the box car (ft.): ");
+            height = console.nextDouble();
+            System.out.println();
+            System.out.print("Enter the width of the box car (ft.): ");
+            width = console.nextDouble();
+            System.out.println();
+            System.out.print("Enter the length of the box car (ft.): ");
+            length = console.nextDouble();
+            System.out.println();
+            RectangularBox car = new RectangularBox(wallThickness, wallDensity, height,
+                                                    width, length);
+            container = car;
+        } else if (carType == 3) {
+            System.out.println("You chose to build a hopper car.");
+            System.out.print("Enter the height of the hopper car (ft.): ");
+            height = console.nextDouble();
+            System.out.println();
+            System.out.print("Enter the width of the hopper car (ft.): ");
+            width = console.nextDouble();
+            System.out.println();
+            System.out.print("Enter the upper length of the hopper car (ft.): ");
+            upperLength = console.nextDouble();
+            System.out.println();
+            System.out.print("Enter the lower length of the hopper car (ft.): ");
+            lowerLength = console.nextDouble();
+            System.out.println();
+            TrapezoidalBox car = new TrapezoidalBox(wallThickness, wallDensity, height,
+                                                    width, upperLength, lowerLength);
+            container = car;
+        }
+        return container;
+    }
+
+    public static Contents constructContents() {
+        Contents contents = null;
+        int contentsChoice = 0;
+        System.out.println("What would you like to load the car up with?");
+        System.out.println("Contents \t\t\t Density (pounds per cubic foot) \t Value " +
+                            " (dollars per pound)");
+        System.out.println("1. Oil \t\t\t\t 55 \t\t\t\t\t\t\t\t 7.85");
+        System.out.println("2. Coal \t\t\t 69 \t\t\t\t\t\t\t\t 50");
+        System.out.println("3. Soybeans \t\t 47 \t\t\t\t\t\t\t\t 2.72");
+        System.out.println("4. Lineseed, meal \t 32 \t\t\t\t\t\t\t\t 0.07");
+        System.out.println("5. Oats \t\t\t 27 \t\t\t\t\t\t\t\t 1.30");
+        System.out.print("Contents choice: ");
+        contentsChoice = console.nextInt();
+        while (contentsChoice < 1 || contentsChoice > 5) {
+            System.out.println("You did not pick a valid contents choice!");
+            System.out.print("Contents choice: ");
+            contentsChoice = console.nextInt();
+        }
+        System.out.println();
+        if (contentsChoice == 1) {
+            contents = new Contents("Oil", 55, 7.85);
+        } else if (contentsChoice == 2) {
+            contents = new Contents("Coal", 69, 50);
+        } else if (contentsChoice == 3) {
+            contents = new Contents("Soybeans", 47, 2.72);
+        } else if (contentsChoice == 4) {
+            contents = new Contents("Lineseed, meal", 32, 0.07);
+        } else if (contentsChoice == 5) {
+            contents = new Contents("Oats", 27, 1.30);
+        }
+        return contents;
+    }
+}
+
+class Train {
+    private String _engineerName;
+    private Engine _engine;
+    private ArrayList<FreightCar> _freightCars;
+
+    public Train(String engineerName, Engine engine) {
+        _engineerName = engineerName;
+        _engine = engine;
+    }
+
+    public String getEngineerName() {
+        return _engineerName;
+    }
+
+    public void addFreightCar(FreightCar freightCar) {
+        _freightCars.add(freightCar);
+    }
 }
 
 abstract class RollingStock {
@@ -352,7 +486,7 @@ class Contents {
 
     public String toString() {
         return "Type: " + _type + "\n" +
-               "Denisty :" + _density + "\n" +
+               "Density: " + _density + "\n" +
                "Value: " + _value + "\n";
     }
 }
