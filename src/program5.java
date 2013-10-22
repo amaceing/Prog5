@@ -9,21 +9,32 @@ public class program5 {
 
     public static void main(String[] args) {
         int railCond = 0;
+        int choice = 0;
         Container container = null;
         Contents contents = null;
+        FreightCar car = null;
+        Train train = null;
+        Engine trainEngine = null;
         printIntro();
         System.out.println();
         railCond = getRailConditions();
         System.out.println();
-        Engine trainEngine = constructAnEngine();
-        System.out.println(trainEngine);
+        trainEngine = constructAnEngine();
         System.out.println();
-        container = constructContainer();
-        System.out.println(container);
+        train = constructTrain(trainEngine);
         System.out.println();
-        contents = constructContents();
-        System.out.println(contents);
-
+        choice = trainBuildingMenu();
+        if (choice == 1) {
+            System.out.println();
+            container = constructContainer();
+            System.out.println(container);
+            System.out.println();
+            contents = constructContents();
+            System.out.println(contents);
+            System.out.println();
+            car = constructFreightCar(contents, container);
+            train.addFreightCar(car);
+        }
     }
 
     public static void printIntro() {
@@ -39,6 +50,8 @@ public class program5 {
         System.out.println("that may pass over the Conemaugh River bridge safely!");
         System.out.print("Maximum acceptable load for a car (lbs.): ");
         maxLoad = console.nextInt();
+        System.out.println();
+        System.out.println("Let's build a train!");
         return maxLoad;
     }
 
@@ -64,6 +77,17 @@ public class program5 {
         System.out.println();
         newEngine = new Engine(ownerName, idNum, baseFrameWeight, pullingCapacity);
         return newEngine;
+    }
+
+    public static Train constructTrain(Engine engine){
+        String engineerName = "";
+        Train train = null;
+        System.out.println("Enter the engineer name's");
+        System.out.print("Engineer name: ");
+        engineerName = console.next();
+        System.out.println();
+        train = new Train(engineerName, engine);
+        return train;
     }
 
     public static Container constructContainer() {
@@ -170,6 +194,42 @@ public class program5 {
         }
         return contents;
     }
+
+    public static FreightCar constructFreightCar(Contents contents, Container container) {
+        FreightCar car = null;
+        String ownerName = "";
+        int idNum = 0;
+        double baseFrameWeight = 0.0;
+        double loadFactor = 0.0;
+        System.out.print("Enter the name of the owner of the car: ");
+        ownerName = console.next();
+        System.out.println();
+        System.out.print("Enter the ID #: ");
+        idNum = console.nextInt();
+        System.out.println();
+        System.out.print("Enter the base frame weight (lbs.): ");
+        baseFrameWeight = console.nextDouble();
+        System.out.println();
+        System.out.print("Enter the load factor (0.0 - 1.0): ");
+        loadFactor = console.nextDouble();
+        car = new FreightCar(ownerName, idNum, baseFrameWeight, contents,
+                             container, loadFactor);
+        return car;
+    }
+
+    public static int trainBuildingMenu() {
+        int choice = 0;
+        System.out.println("Train Building Menu");
+        System.out.println("1. Add a car");
+        System.out.print("Menu choice: ");
+        choice = console.nextInt();
+        while (choice != 1){
+            System.out.println("You did not chose a valid option!");
+            System.out.print("Menu choice: ");
+            choice = console.nextInt();
+        }
+        return choice;
+    }
 }
 
 class Train {
@@ -263,8 +323,8 @@ class FreightCar extends RollingStock {
 
     public double computeTotalWeight() {
         double totalWeight = 0.0;
-        totalWeight = _container.wallWeight() + (_contents.getDensity() *
-                                                _container.computeInteriorVolume());
+        totalWeight = (_container.wallWeight() + super.getBaseFrameWeight()) +
+                      (_contents.getDensity() * _container.computeInteriorVolume());
         return totalWeight;
     }
 
