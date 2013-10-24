@@ -229,8 +229,8 @@ public class program5 {
         System.out.print("Enter the base frame weight (lbs.): ");
         baseFrameWeight = console.nextDouble();
         System.out.println();
-        System.out.print("Enter the load factor (0.0 - 1.0): ");
-        loadFactor = console.nextDouble();
+        System.out.print("Enter the load factor (%): ");
+        loadFactor = console.nextDouble() / 100.0;
         car = new FreightCar(ownerName, idNum, baseFrameWeight, contents,
                              container, loadFactor);
         return car;
@@ -247,7 +247,7 @@ public class program5 {
         System.out.println("6. Quit program");
         System.out.print("Menu choice: ");
         choice = console.nextInt();
-        while (choice < 1 || choice > 2){
+        while (choice < 1 || choice > 4){
             System.out.println("You did not chose a valid option!");
             System.out.print("Menu choice: ");
             choice = console.nextInt();
@@ -312,7 +312,8 @@ class Train {
         System.out.println(totalWeight);
         System.out.println(totalValue);
         if (totalWeight > _engine.getPullingCapacity()) {
-            System.out.println("The train's total weight is greater than the pulling capacity!");
+            System.out.println("The train's total weight is greater than " +
+                    "the pulling capacity!");
         }
     }
 
@@ -401,7 +402,8 @@ class FreightCar extends RollingStock {
     public double computeTotalWeight() {
         double totalWeight = 0.0;
         totalWeight = (_container.wallWeight() + super.getBaseFrameWeight()) +
-                      (_contents.getDensity() * _container.computeInteriorVolume());
+                      (_contents.getDensity() *
+                      (_container.computeInteriorVolume() * _loadFactor));
         return totalWeight;
     }
 
@@ -416,7 +418,7 @@ class FreightCar extends RollingStock {
         return super.toString() +
                "Contents: " + _contents.getType() + "\n" +
                "Container: " + _container + "\n" +
-               "Load factor: " + _loadFactor;
+               "Load factor: " + _loadFactor * 100.0 + "%";
     }
 }
 
@@ -450,8 +452,7 @@ abstract class Container {
     }
 
     public String toString() {
-        return getClass() + "\n" +
-               "Wall thickness: " + _wallThickness + "\n" +
+        return "Wall thickness: " + _wallThickness + "\n" +
                "Wall density: " + _wallDensity + "\n";
     }
 }
@@ -490,6 +491,7 @@ class Cylinder extends Container {
 
     public String toString() {
         return super.toString() +
+               "Car Type: " + "Tank" +
                "Radius: " + _radius + "\n" +
                "Length: " + _length;
     }
@@ -536,6 +538,7 @@ class RectangularBox extends Container {
 
     public String toString() {
         return super.toString() +
+               "Car Type: " + "Box" +
                "Height: " + _height + "\n" +
                "Width: " + _width + "\n" +
                "Length: " + _length;
@@ -588,6 +591,7 @@ class TrapezoidalBox extends Container {
 
     public String toString() {
         return super.toString() +
+               "Car Type: " + "Hopper" +
                "Height: " + _height + "\n" +
                "Width: " + _width + "\n" +
                "Upper Length: " + _upperLength + "\n" +
