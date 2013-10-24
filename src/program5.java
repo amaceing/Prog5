@@ -10,6 +10,7 @@ public class program5 {
     public static void main(String[] args) {
         int railCond = 0;
         int choice = 0;
+        char quit = '0';
         Container container = null;
         Contents contents = null;
         FreightCar car = null;
@@ -22,19 +23,37 @@ public class program5 {
         trainEngine = constructAnEngine();
         System.out.println();
         train = constructTrain(trainEngine);
-        System.out.println();
-        choice = trainBuildingMenu();
-        if (choice == 1) {
+        do {
+            do {
+                System.out.println();
+                choice = trainBuildingMenu();
+                if (choice == 1) {
+                    System.out.println();
+                    container = constructContainer();
+                    System.out.println(container);
+                    System.out.println();
+                    contents = constructContents();
+                    System.out.println(contents);
+                    System.out.println();
+                    car = constructFreightCar(contents, container);
+                    System.out.println(car);
+                    train.addFreightCar(car);
+                } else if (choice == 2) {
+                    System.out.println();
+                    System.out.println(train);
+                } else if (choice == 3) {
+                    System.out.println();
+                    train.displayBriefSummary(railCond);
+                } else if (choice == 4) {
+                    System.out.println();
+                    train.trainWeightAndValue();
+                }
+            } while(choice >= 1 && choice <= 4);
             System.out.println();
-            container = constructContainer();
-            System.out.println(container);
-            System.out.println();
-            contents = constructContents();
-            System.out.println(contents);
-            System.out.println();
-            car = constructFreightCar(contents, container);
-            train.addFreightCar(car);
-        }
+            System.out.println("Would you like quit?");
+            System.out.print("Enter Y or N: ");
+            quit = console.next().charAt(0);
+        } while(quit != 'Y' && quit != 'y');
     }
 
     public static void printIntro() {
@@ -221,9 +240,14 @@ public class program5 {
         int choice = 0;
         System.out.println("Train Building Menu");
         System.out.println("1. Add a car");
+        System.out.println("2. Display complete description of Train");
+        System.out.println("3. Display brief summary of each car");
+        System.out.println("4. Display total weight and value of Train");
+        System.out.println("5. Start a new Train");
+        System.out.println("6. Quit program");
         System.out.print("Menu choice: ");
         choice = console.nextInt();
-        while (choice != 1){
+        while (choice < 1 || choice > 2){
             System.out.println("You did not chose a valid option!");
             System.out.print("Menu choice: ");
             choice = console.nextInt();
@@ -235,7 +259,7 @@ public class program5 {
 class Train {
     private String _engineerName;
     private Engine _engine;
-    private ArrayList<FreightCar> _freightCars;
+    private ArrayList<FreightCar> _freightCars = new ArrayList<FreightCar>();
 
     public Train(String engineerName, Engine engine) {
         _engineerName = engineerName;
@@ -248,6 +272,59 @@ class Train {
 
     public void addFreightCar(FreightCar freightCar) {
         _freightCars.add(freightCar);
+    }
+
+    public void deleteFreightCar(int freightCarID) {
+        for (FreightCar car: _freightCars) {
+            if (car.getIDNum() == freightCarID) {
+                _freightCars.remove(car);
+            }
+        }
+    }
+
+    public void changeLoadFactor(int freightCarID, double newLoadFactor) {
+        for (FreightCar car: _freightCars) {
+            if (car.getIDNum() == freightCarID) {
+                car.setLoadFactor(newLoadFactor);
+            }
+        }
+    }
+
+    public void displayBriefSummary(int maxWeight) {
+        for (FreightCar car: _freightCars) {
+            System.out.println("ID #: " + car.getIDNum());
+            System.out.println("Total Weight: " + car.computeTotalWeight());
+            if (car.computeTotalWeight() > maxWeight) {
+                System.out.println("This car's weight is greater than the weight allowed" +
+                                   " to go over the bridge!");
+            }
+            System.out.println("Total Value: " + car.computeTotalValue());
+        }
+    }
+
+    public void trainWeightAndValue() {
+        double totalWeight = 0.0;
+        double totalValue = 0.0;
+        for (FreightCar car: _freightCars) {
+            totalWeight += car.computeTotalWeight();
+            totalValue += car.computeTotalWeight();
+        }
+        System.out.println(totalWeight);
+        System.out.println(totalValue);
+        if (totalWeight > _engine.getPullingCapacity()) {
+            System.out.println("The train's total weight is greater than the pulling capacity!");
+        }
+    }
+
+    public String toString() {
+        String cars = "";
+        for (FreightCar car: _freightCars) {
+            cars += car + "\n\n";
+        }
+        return "Train: \n" +
+               "Engineer name: " + _engineerName + "\n\n" +
+               "Engine: \n" + _engine + "\n\n" +
+               "Train cars: \n" + cars;
     }
 }
 
