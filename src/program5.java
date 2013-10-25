@@ -16,6 +16,12 @@ public class program5 {
         FreightCar car = null;
         Train train = null;
         Engine trainEngine = null;
+        Contents[] contentsArray = new Contents[5];
+        contentsArray[0] = new Contents("Oil", 55, 7.85);
+        contentsArray[1] = new Contents("Coal", 69, 50);
+        contentsArray[2] = new Contents("Soybeans", 47, 2.72);
+        contentsArray[3] = new Contents("Lineseed, meal", 32, 0.07);
+        contentsArray[4] = new Contents("Oats", 27, 1.30);;
         printIntro();
         System.out.println();
         railCond = getRailConditions();
@@ -32,7 +38,7 @@ public class program5 {
                     container = constructContainer();
                     System.out.println(container);
                     System.out.println();
-                    contents = constructContents();
+                    contents = constructContents(contentsArray);
                     System.out.println(contents);
                     System.out.println();
                     car = constructFreightCar(contents, container);
@@ -49,11 +55,9 @@ public class program5 {
                     train.trainWeightAndValue();
                 }
             } while(choice >= 1 && choice <= 4);
-            System.out.println();
-            System.out.println("Would you like quit?");
-            System.out.print("Enter Y or N: ");
-            quit = console.next().charAt(0);
-        } while(quit != 'Y' && quit != 'y');
+        } while(choice != 5);
+        System.out.println();
+        System.out.println("You hace quit the program.");
     }
 
     public static void printIntro() {
@@ -181,7 +185,8 @@ public class program5 {
         return container;
     }
 
-    public static Contents constructContents() {
+    public static Contents constructContents(Contents[] contentsArray) {
+        Contents[] contArray = new Contents[5];
         Contents contents = null;
         int contentsChoice = 0;
         System.out.println("What would you like to load the car up with?");
@@ -201,15 +206,15 @@ public class program5 {
         }
         System.out.println();
         if (contentsChoice == 1) {
-            contents = new Contents("Oil", 55, 7.85);
+            contents = contentsArray[0];
         } else if (contentsChoice == 2) {
-            contents = new Contents("Coal", 69, 50);
+            contents = contentsArray[1];
         } else if (contentsChoice == 3) {
-            contents = new Contents("Soybeans", 47, 2.72);
+            contents = contentsArray[2];
         } else if (contentsChoice == 4) {
-            contents = new Contents("Lineseed, meal", 32, 0.07);
+            contents = contentsArray[3];
         } else if (contentsChoice == 5) {
-            contents = new Contents("Oats", 27, 1.30);
+            contents = contentsArray[4];
         }
         return contents;
     }
@@ -578,14 +583,15 @@ class TrapezoidalBox extends Container {
 
     public double computeExteriorVolume() {
         double extVol = 0.0;
-        extVol = (1.0/2.0) * (_upperLength + _lowerLength) * _width * _height;
+        extVol = ((1.0/2.0) * (_upperLength + _lowerLength)) * _width * _height;
         return extVol;
     }
 
     public double computeInteriorVolume() {
         double intVol = 0.0;
-        intVol = (1.0/2.0) * (_upperLength - (2* getWallThickness()) + _lowerLength) *
-                 _width * _height;
+        intVol = ((1.0/2.0) * (_upperLength - (2* getWallThickness()) + _lowerLength -
+                            (2* getWallThickness()))) * (_width - (2 * getWallThickness())) *
+                                                       (_height - getWallThickness());
         return intVol;
     }
 
