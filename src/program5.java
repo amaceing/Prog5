@@ -15,7 +15,6 @@ public class program5 {
         Contents contents = null;
         FreightCar car = null;
         Train train = null;
-        Engine trainEngine = null;
         Contents[] contentsArray = new Contents[5];
         contentsArray[0] = new Contents("Oil", 55, 7.85);
         contentsArray[1] = new Contents("Coal", 69, 50);
@@ -26,16 +25,15 @@ public class program5 {
         System.out.println();
         railCond = getRailConditions();
         System.out.println();
-        trainEngine = constructAnEngine();
-        System.out.println();
-        train = constructTrain(trainEngine);
-        do {
+        train = constructTrain();
             do {
                 System.out.println();
                 choice = trainBuildingMenu();
                 if (choice == 1) {
                     System.out.println();
                     container = constructContainer();
+                    System.out.println(container.computeExteriorVolume());
+                    System.out.println(container.computeInteriorVolume());
                     System.out.println(container);
                     System.out.println();
                     contents = constructContents(contentsArray);
@@ -53,11 +51,13 @@ public class program5 {
                 } else if (choice == 4) {
                     System.out.println();
                     train.trainWeightAndValue();
+                } else if (choice == 5) {
+                    System.out.println();
+                    train = constructTrain();
                 }
-            } while(choice >= 1 && choice <= 4);
-        } while(choice != 5);
+            } while(choice >= 1 && choice <= 5);
         System.out.println();
-        System.out.println("You hace quit the program.");
+        System.out.println("You have quit the program.");
     }
 
     public static void printIntro() {
@@ -102,7 +102,8 @@ public class program5 {
         return newEngine;
     }
 
-    public static Train constructTrain(Engine engine){
+    public static Train constructTrain(){
+        Engine engine = constructAnEngine();
         String engineerName = "";
         Train train = null;
         System.out.println("Enter the engineer name's");
@@ -252,7 +253,7 @@ public class program5 {
         System.out.println("6. Quit program");
         System.out.print("Menu choice: ");
         choice = console.nextInt();
-        while (choice < 1 || choice > 4){
+        while (choice < 1 || choice > 6){
             System.out.println("You did not chose a valid option!");
             System.out.print("Menu choice: ");
             choice = console.nextInt();
@@ -299,6 +300,7 @@ class Train {
         for (FreightCar car: _freightCars) {
             System.out.println("ID #: " + car.getIDNum());
             System.out.println("Total Weight: " + car.computeTotalWeight());
+            System.out.println();
             if (car.computeTotalWeight() > maxWeight) {
                 System.out.println("This car's weight is greater than the weight allowed" +
                                    " to go over the bridge!");
@@ -312,13 +314,14 @@ class Train {
         double totalValue = 0.0;
         for (FreightCar car: _freightCars) {
             totalWeight += car.computeTotalWeight();
-            totalValue += car.computeTotalWeight();
+            totalValue += car.computeTotalValue();
         }
-        System.out.println(totalWeight);
-        System.out.println(totalValue);
+        totalWeight += _engine.getBaseFrameWeight();
+        System.out.println("Total Weight: " + totalWeight);
+        System.out.println("Total Value: " + totalValue);
         if (totalWeight > _engine.getPullingCapacity()) {
             System.out.println("The train's total weight is greater than " +
-                    "the pulling capacity!");
+                    "the engine's pulling capacity!");
         }
     }
 
@@ -496,7 +499,7 @@ class Cylinder extends Container {
 
     public String toString() {
         return super.toString() +
-               "Car Type: " + "Tank" +
+               "Car Type: " + "Tank" + "\n" +
                "Radius: " + _radius + "\n" +
                "Length: " + _length;
     }
@@ -543,7 +546,7 @@ class RectangularBox extends Container {
 
     public String toString() {
         return super.toString() +
-               "Car Type: " + "Box" +
+               "Car Type: " + "Box" + "\n" +
                "Height: " + _height + "\n" +
                "Width: " + _width + "\n" +
                "Length: " + _length;
@@ -597,7 +600,7 @@ class TrapezoidalBox extends Container {
 
     public String toString() {
         return super.toString() +
-               "Car Type: " + "Hopper" +
+               "Car Type: " + "Hopper" + "\n" +
                "Height: " + _height + "\n" +
                "Width: " + _width + "\n" +
                "Upper Length: " + _upperLength + "\n" +
