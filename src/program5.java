@@ -26,36 +26,31 @@ public class program5 {
         railCond = getRailConditions();
         System.out.println();
         train = constructTrain();
-            do {
+        do {
+            System.out.println();
+            choice = trainBuildingMenu();
+            if (choice == 1) {
                 System.out.println();
-                choice = trainBuildingMenu();
-                if (choice == 1) {
-                    System.out.println();
-                    container = constructContainer();
-                    System.out.println(container.computeExteriorVolume());
-                    System.out.println(container.computeInteriorVolume());
-                    System.out.println(container);
-                    System.out.println();
-                    contents = constructContents(contentsArray);
-                    System.out.println(contents);
-                    System.out.println();
-                    car = constructFreightCar(contents, container);
-                    System.out.println(car);
-                    train.addFreightCar(car);
-                } else if (choice == 2) {
-                    System.out.println();
-                    System.out.println(train);
-                } else if (choice == 3) {
-                    System.out.println();
-                    train.displayBriefSummary(railCond);
-                } else if (choice == 4) {
-                    System.out.println();
-                    train.trainWeightAndValue();
-                } else if (choice == 5) {
-                    System.out.println();
-                    train = constructTrain();
-                }
-            } while(choice >= 1 && choice <= 5);
+                container = constructContainer();
+                System.out.println();
+                contents = constructContents(contentsArray);
+                System.out.println();
+                car = constructFreightCar(contents, container);
+                train.addFreightCar(car);
+            } else if (choice == 2) {
+                System.out.println();
+                System.out.print(train);
+            } else if (choice == 3) {
+                System.out.println();
+                train.displayBriefSummary(railCond);
+            } else if (choice == 4) {
+                System.out.println();
+                train.trainWeightAndValue();
+            } else if (choice == 5) {
+                System.out.println();
+                train = constructTrain();
+            }
+        } while (choice >= 1 && choice <= 5);
         System.out.println();
         System.out.println("You have quit the program.");
     }
@@ -109,7 +104,6 @@ public class program5 {
         System.out.println("Enter the engineer name's");
         System.out.print("Engineer name: ");
         engineerName = console.next();
-        System.out.println();
         train = new Train(engineerName, engine);
         return train;
     }
@@ -162,7 +156,6 @@ public class program5 {
         System.out.println();
         System.out.print("Enter the length of the tank car: ");
         length = console.nextDouble();
-        System.out.println();
         cylinder = new Cylinder(wallThickness, wallDensity, radius, length);
         return cylinder;
     }
@@ -182,7 +175,6 @@ public class program5 {
         System.out.println();
         System.out.print("Enter the length of the box car: ");
         length = console.nextDouble();
-        System.out.println();
         rect = new RectangularBox(wallThickness, wallDensity, height, width, length);
         return rect;
     }
@@ -206,7 +198,6 @@ public class program5 {
         System.out.println();
         System.out.print("Enter the lower length of the hopper car: ");
         lowerLength = console.nextDouble();
-        System.out.println();
         trap = new TrapezoidalBox(wallThickness, wallDensity, height,
                                   width, upperLength, lowerLength);
         return trap;
@@ -231,7 +222,6 @@ public class program5 {
             System.out.print("Contents choice: ");
             contentsChoice = console.nextInt();
         }
-        System.out.println();
         if (contentsChoice == 1) {
             contents = contentsArray[0];
         } else if (contentsChoice == 2) {
@@ -326,25 +316,29 @@ class Train {
         for (FreightCar car: _freightCars) {
             System.out.println("ID #: " + car.getIDNum());
             System.out.println("Total Weight: " + car.computeTotalWeight());
-            System.out.println();
             if (car.computeTotalWeight() > maxWeight) {
                 System.out.println("This car's weight is greater than the weight allowed" +
                                    " to go over the bridge!");
             }
-            System.out.println("Total Value: " + car.computeTotalValue() + "\n");
+            System.out.println("Total Value: " + car.computeTotalValue());
+            System.out.println();
         }
     }
 
     public void trainWeightAndValue() {
         double totalWeight = 0.0;
         double totalValue = 0.0;
+        int carCount = 0;
         for (FreightCar car: _freightCars) {
             totalWeight += car.computeTotalWeight();
             totalValue += car.computeTotalValue();
+            carCount++;
         }
         totalWeight += _engine.getBaseFrameWeight();
+        System.out.println("Train values: ");
         System.out.println("Total Weight: " + totalWeight);
         System.out.println("Total Value: " + totalValue);
+        System.out.println("Number of Cars: " + carCount);
         if (totalWeight > _engine.getPullingCapacity()) {
             System.out.println("The train's total weight is greater than " +
                     "the engine's pulling capacity!");
@@ -354,12 +348,12 @@ class Train {
     public String toString() {
         String cars = "";
         for (FreightCar car: _freightCars) {
-            cars += car + "\n";
+            cars += car + "\n\n";
         }
         return "Train: \n" +
                "Engineer name: " + _engineerName + "\n\n" +
                "Engine: \n" + _engine + "\n\n" +
-               "Train cars: \n" + cars;
+               "Train cars: \n\n" + cars;
     }
 }
 
