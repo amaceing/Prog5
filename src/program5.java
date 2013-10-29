@@ -118,8 +118,6 @@ public class program5 {
         Container container = null;
         double wallThickness = 0.0;
         double wallDensity = 0.0;
-        double radius = 0.0;
-        double length = 0.0;
         double height = 0.0;
         double width = 0.0;
         double upperLength = 0.0;
@@ -145,45 +143,73 @@ public class program5 {
         wallDensity = console.nextDouble();
         System.out.println();
         if (carType == 1) {
-            System.out.println("You chose to build a tank car.");
-            System.out.print("Enter the radius of the tank car: ");
-            radius = console.nextDouble();
-            System.out.println();
-            System.out.print("Enter the length of the tank car: ");
-            length = console.nextDouble();
-            System.out.println();
-            container = new Cylinder(wallThickness, wallDensity, radius, length);
+            container = constructCylinder(wallThickness, wallDensity);
         } else if (carType == 2) {
-            System.out.println("You chose to build a box car.");
-            System.out.print("Enter the height of the box car: ");
-            height = console.nextDouble();
-            System.out.println();
-            System.out.print("Enter the width of the box car: ");
-            width = console.nextDouble();
-            System.out.println();
-            System.out.print("Enter the length of the box car: ");
-            length = console.nextDouble();
-            System.out.println();
-            container = new RectangularBox(wallThickness, wallDensity, height,
-                                                    width, length);
+            container = constructRectangle(wallThickness, wallDensity);
         } else if (carType == 3) {
-            System.out.println("You chose to build a hopper car.");
-            System.out.print("Enter the height of the hopper car: ");
-            height = console.nextDouble();
-            System.out.println();
-            System.out.print("Enter the width of the hopper car: ");
-            width = console.nextDouble();
-            System.out.println();
-            System.out.print("Enter the upper length of the hopper car: ");
-            upperLength = console.nextDouble();
-            System.out.println();
-            System.out.print("Enter the lower length of the hopper car: ");
-            lowerLength = console.nextDouble();
-            System.out.println();
-            container = new TrapezoidalBox(wallThickness, wallDensity, height,
-                                                    width, upperLength, lowerLength);
+            container = constructTrap(wallThickness, wallDensity);
         }
         return container;
+    }
+
+    public static Cylinder constructCylinder(double wallThickness, double wallDensity) {
+        double radius = 0.0;
+        double length = 0.0;
+        Cylinder cylinder = null;
+        System.out.println("You chose to build a tank car.");
+        System.out.print("Enter the radius of the tank car: ");
+        radius = console.nextDouble();
+        System.out.println();
+        System.out.print("Enter the length of the tank car: ");
+        length = console.nextDouble();
+        System.out.println();
+        cylinder = new Cylinder(wallThickness, wallDensity, radius, length);
+        return cylinder;
+    }
+
+    public static RectangularBox constructRectangle(double wallThickness,
+                                                    double wallDensity) {
+        double height = 0.0;
+        double width = 0.0;
+        double length = 0.0;
+        RectangularBox rect = null;
+        System.out.println("You chose to build a box car.");
+        System.out.print("Enter the height of the box car: ");
+        height = console.nextDouble();
+        System.out.println();
+        System.out.print("Enter the width of the box car: ");
+        width = console.nextDouble();
+        System.out.println();
+        System.out.print("Enter the length of the box car: ");
+        length = console.nextDouble();
+        System.out.println();
+        rect = new RectangularBox(wallThickness, wallDensity, height, width, length);
+        return rect;
+    }
+
+    public static TrapezoidalBox constructTrap(double wallThickness,
+                                               double wallDensity) {
+        double height = 0.0;
+        double width = 0.0;
+        double upperLength = 0.0;
+        double lowerLength = 0.0;
+        TrapezoidalBox trap = null;
+        System.out.println("You chose to build a hopper car.");
+        System.out.print("Enter the height of the hopper car: ");
+        height = console.nextDouble();
+        System.out.println();
+        System.out.print("Enter the width of the hopper car: ");
+        width = console.nextDouble();
+        System.out.println();
+        System.out.print("Enter the upper length of the hopper car: ");
+        upperLength = console.nextDouble();
+        System.out.println();
+        System.out.print("Enter the lower length of the hopper car: ");
+        lowerLength = console.nextDouble();
+        System.out.println();
+        trap = new TrapezoidalBox(wallThickness, wallDensity, height,
+                                  width, upperLength, lowerLength);
+        return trap;
     }
 
     public static Contents constructContents(Contents[] contentsArray) {
@@ -305,7 +331,7 @@ class Train {
                 System.out.println("This car's weight is greater than the weight allowed" +
                                    " to go over the bridge!");
             }
-            System.out.println("Total Value: " + car.computeTotalValue());
+            System.out.println("Total Value: " + car.computeTotalValue() + "\n");
         }
     }
 
@@ -328,7 +354,7 @@ class Train {
     public String toString() {
         String cars = "";
         for (FreightCar car: _freightCars) {
-            cars += car + "\n\n";
+            cars += car + "\n";
         }
         return "Train: \n" +
                "Engineer name: " + _engineerName + "\n\n" +
