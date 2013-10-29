@@ -138,7 +138,7 @@ public class program5 {
             carType = console.nextInt();
         }
         System.out.println();
-        System.out.print("Enter the thickness of the walls (ft.): ");
+        System.out.print("Enter the thickness of the walls: ");
         wallThickness = console.nextDouble();
         System.out.println();
         System.out.print("Enter the wall density: ");
@@ -146,38 +146,38 @@ public class program5 {
         System.out.println();
         if (carType == 1) {
             System.out.println("You chose to build a tank car.");
-            System.out.print("Enter the radius of the tank car (ft.): ");
+            System.out.print("Enter the radius of the tank car: ");
             radius = console.nextDouble();
             System.out.println();
-            System.out.print("Enter the length of the tank car (ft.): ");
+            System.out.print("Enter the length of the tank car: ");
             length = console.nextDouble();
             System.out.println();
             container = new Cylinder(wallThickness, wallDensity, radius, length);
         } else if (carType == 2) {
             System.out.println("You chose to build a box car.");
-            System.out.print("Enter the height of the box car (ft.): ");
+            System.out.print("Enter the height of the box car: ");
             height = console.nextDouble();
             System.out.println();
-            System.out.print("Enter the width of the box car (ft.): ");
+            System.out.print("Enter the width of the box car: ");
             width = console.nextDouble();
             System.out.println();
-            System.out.print("Enter the length of the box car (ft.): ");
+            System.out.print("Enter the length of the box car: ");
             length = console.nextDouble();
             System.out.println();
             container = new RectangularBox(wallThickness, wallDensity, height,
                                                     width, length);
         } else if (carType == 3) {
             System.out.println("You chose to build a hopper car.");
-            System.out.print("Enter the height of the hopper car (ft.): ");
+            System.out.print("Enter the height of the hopper car: ");
             height = console.nextDouble();
             System.out.println();
-            System.out.print("Enter the width of the hopper car (ft.): ");
+            System.out.print("Enter the width of the hopper car: ");
             width = console.nextDouble();
             System.out.println();
-            System.out.print("Enter the upper length of the hopper car (ft.): ");
+            System.out.print("Enter the upper length of the hopper car: ");
             upperLength = console.nextDouble();
             System.out.println();
-            System.out.print("Enter the lower length of the hopper car (ft.): ");
+            System.out.print("Enter the lower length of the hopper car: ");
             lowerLength = console.nextDouble();
             System.out.println();
             container = new TrapezoidalBox(wallThickness, wallDensity, height,
@@ -232,7 +232,7 @@ public class program5 {
         System.out.print("Enter the ID #: ");
         idNum = console.nextInt();
         System.out.println();
-        System.out.print("Enter the base frame weight (lbs.): ");
+        System.out.print("Enter the base frame weight: ");
         baseFrameWeight = console.nextDouble();
         System.out.println();
         System.out.print("Enter the load factor (%): ");
