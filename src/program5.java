@@ -558,9 +558,9 @@ class RectangularBox extends Container {
 
     public double computeInteriorVolume() {
         double intVol = 0.0;
-        intVol = (_height * (2 * getWallThickness())) *
-                 (_width * (2 * getWallThickness())) *
-                 (_length * (2 * getWallThickness()));
+        intVol = (_height - (2 * getWallThickness())) *
+                 (_width - (2 * getWallThickness())) *
+                 (_length - (2 * getWallThickness()));
         return intVol;
     }
 
