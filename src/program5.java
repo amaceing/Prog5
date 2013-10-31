@@ -26,6 +26,7 @@ public class program5 {
         railCond = getRailConditions();
         System.out.println();
         train = constructTrain();
+        //Runs the menu option loop
         do {
             System.out.println();
             choice = trainBuildingMenu();
@@ -55,6 +56,8 @@ public class program5 {
         System.out.println("You have quit the program.");
     }
 
+    //Prints the intro to the program,
+    //giving the user an idea of what the program does
     public static void printIntro() {
         System.out.println("This program is designed to help you build a train!");
         System.out.println("The program will help you decide which cars to include \n" +
@@ -62,6 +65,8 @@ public class program5 {
                            "the engine and aspects of each car.");
     }
 
+    //Gets the maximum acceptable load for a
+    //single car over the bridge
     public static int getRailConditions() {
         int maxLoad = 0;
         System.out.println("Please enter the maximum acceptable load of a single car");
@@ -73,6 +78,7 @@ public class program5 {
         return maxLoad;
     }
 
+    //Constructs an engine from user input
     public static Engine constructAnEngine() {
         Engine newEngine = null;
         String ownerName = "";
@@ -97,6 +103,8 @@ public class program5 {
         return newEngine;
     }
 
+    //Constructs a Train from user input and
+    //an engine reference
     public static Train constructTrain(){
         Engine engine = constructAnEngine();
         String engineerName = "";
@@ -108,6 +116,7 @@ public class program5 {
         return train;
     }
 
+    //Constructs a container from user input
     public static Container constructContainer() {
         Container container = null;
         double wallThickness = 0.0;
@@ -136,6 +145,8 @@ public class program5 {
         System.out.print("Enter the wall density: ");
         wallDensity = console.nextDouble();
         System.out.println();
+        //Calls appropriate container subclass
+        //constructor
         if (carType == 1) {
             container = constructCylinder(wallThickness, wallDensity);
         } else if (carType == 2) {
@@ -146,6 +157,7 @@ public class program5 {
         return container;
     }
 
+    //Constructs a Cylinder from user input
     public static Cylinder constructCylinder(double wallThickness, double wallDensity) {
         double radius = 0.0;
         double length = 0.0;
@@ -160,6 +172,7 @@ public class program5 {
         return cylinder;
     }
 
+    //Constructs a RectangularBox from user input
     public static RectangularBox constructRectangle(double wallThickness,
                                                     double wallDensity) {
         double height = 0.0;
@@ -179,6 +192,7 @@ public class program5 {
         return rect;
     }
 
+    //Constructs a TrapezoidalBox from user input
     public static TrapezoidalBox constructTrap(double wallThickness,
                                                double wallDensity) {
         double height = 0.0;
@@ -203,6 +217,7 @@ public class program5 {
         return trap;
     }
 
+    //Constructs a contents instance from user input
     public static Contents constructContents(Contents[] contentsArray) {
         Contents[] contArray = new Contents[5];
         Contents contents = null;
@@ -236,6 +251,8 @@ public class program5 {
         return contents;
     }
 
+    //Constructs a FreightCar from user input and
+    //a contents and container instance
     public static FreightCar constructFreightCar(Contents contents, Container container) {
         FreightCar car = null;
         String ownerName = "";
@@ -258,6 +275,8 @@ public class program5 {
         return car;
     }
 
+    //Provides the option for building a train
+    //and returns the choice
     public static int trainBuildingMenu() {
         int choice = 0;
         System.out.println("Train Building Menu");
@@ -278,6 +297,7 @@ public class program5 {
     }
 }
 
+//Used to create and manipulate Train instances
 class Train {
     private String _engineerName;
     private Engine _engine;
@@ -292,10 +312,12 @@ class Train {
         return _engineerName;
     }
 
+    //Adds a FreightCar to the train
     public void addFreightCar(FreightCar freightCar) {
         _freightCars.add(freightCar);
     }
 
+    //Can be used to delete a FreightCar from the train
     public void deleteFreightCar(int freightCarID) {
         for (FreightCar car: _freightCars) {
             if (car.getIDNum() == freightCarID) {
@@ -304,6 +326,8 @@ class Train {
         }
     }
 
+    //Can be user to change the loadFactor of a FreightCar
+    //the train contains
     public void changeLoadFactor(int freightCarID, double newLoadFactor) {
         for (FreightCar car: _freightCars) {
             if (car.getIDNum() == freightCarID) {
@@ -312,6 +336,8 @@ class Train {
         }
     }
 
+    //Displays a brief summary of each FreightCar
+    //with ID, total weight, and total value
     public void displayBriefSummary(int maxWeight) {
         for (FreightCar car: _freightCars) {
             System.out.println("ID #: " + car.getIDNum());
@@ -325,6 +351,8 @@ class Train {
         }
     }
 
+    //Displays the train's total weight and
+    //value
     public void trainWeightAndValue() {
         double totalWeight = 0.0;
         double totalValue = 0.0;
@@ -345,6 +373,7 @@ class Train {
         }
     }
 
+    //Prints out every detail of the train
     public String toString() {
         String cars = "";
         for (FreightCar car: _freightCars) {
@@ -357,6 +386,7 @@ class Train {
     }
 }
 
+//Used to create and manipulate RollingStock instances
 abstract class RollingStock {
     private String _ownerName;
     private int _idNum;
@@ -387,6 +417,7 @@ abstract class RollingStock {
     }
 }
 
+//Used to create and manipulate Engine instances
 class Engine extends RollingStock {
     private double _pullingCapacity;
 
@@ -406,6 +437,7 @@ class Engine extends RollingStock {
     }
 }
 
+//Used to create and manipulate FreightCar instances
 class FreightCar extends RollingStock {
     private Contents _contents;
     private Container _container;
@@ -450,6 +482,7 @@ class FreightCar extends RollingStock {
     }
 }
 
+//Used to create and manipulate Container instances
 abstract class Container {
     private double _wallThickness;
     private double _wallDensity;
@@ -485,6 +518,7 @@ abstract class Container {
     }
 }
 
+//Used to create and manipulate Cylinder instances
 class Cylinder extends Container {
     private double _radius;
     private double _length;
@@ -525,6 +559,7 @@ class Cylinder extends Container {
     }
 }
 
+//Used to create and manipulate RectangularBox instances
 class RectangularBox extends Container {
     private double _height;
     private double _width;
@@ -573,6 +608,7 @@ class RectangularBox extends Container {
     }
 }
 
+//Used to create and manipulate TrapezoidalBox instances
 class TrapezoidalBox extends Container {
     private double _height;
     private double _width;
@@ -628,6 +664,7 @@ class TrapezoidalBox extends Container {
     }
 }
 
+//Used to create and manipulate Contents instances
 class Contents {
     private String _type;
     private double _density;
