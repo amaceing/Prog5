@@ -20,7 +20,7 @@ public class program5 {
         contentsArray[1] = new Contents("Coal", 69, 50);
         contentsArray[2] = new Contents("Soybeans", 47, 2.72);
         contentsArray[3] = new Contents("Lineseed, meal", 32, 0.07);
-        contentsArray[4] = new Contents("Oats", 27, 1.30);;
+        contentsArray[4] = new Contents("Oats", 27, 1.30);
         printIntro();
         System.out.println();
         railCond = getRailConditions();
