@@ -519,7 +519,7 @@ class Cylinder extends Container {
 
     public String toString() {
         return super.toString() +
-               "Car Type: " + "Tank" + "\n" +
+               "Car Type: Tank" + "\n" +
                "Radius: " + _radius + "\n" +
                "Length: " + _length;
     }
@@ -566,7 +566,7 @@ class RectangularBox extends Container {
 
     public String toString() {
         return super.toString() +
-               "Car Type: " + "Box" + "\n" +
+               "Car Type: Box" + "\n" +
                "Height: " + _height + "\n" +
                "Width: " + _width + "\n" +
                "Length: " + _length;
@@ -620,7 +620,7 @@ class TrapezoidalBox extends Container {
 
     public String toString() {
         return super.toString() +
-               "Car Type: " + "Hopper" + "\n" +
+               "Car Type: Hopper" + "\n" +
                "Height: " + _height + "\n" +
                "Width: " + _width + "\n" +
                "Upper Length: " + _upperLength + "\n" +
