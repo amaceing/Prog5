@@ -341,12 +341,14 @@ class Train {
     public void displayBriefSummary(int maxWeight) {
         for (FreightCar car: _freightCars) {
             System.out.println("ID #: " + car.getIDNum());
-            System.out.println("Total Weight: " + car.computeTotalWeight());
+            System.out.println("Total Weight: " +
+                               Math.round(car.computeTotalWeight() * 100) / 100.0);
             if (car.computeTotalWeight() > maxWeight) {
                 System.out.println("This car's weight is greater than the weight allowed" +
                                    " to go over the bridge!");
             }
-            System.out.println("Total Value: $" + car.computeTotalValue());
+            System.out.println("Total Value: $" +
+                                Math.round(car.computeTotalValue() * 100) / 100.0);
             System.out.println();
         }
     }
@@ -363,6 +365,9 @@ class Train {
             carCount++;
         }
         totalWeight += _engine.getBaseFrameWeight();
+        //To round numbers to two decimals
+        totalWeight = Math.round(totalWeight * 100) / 100.0;
+        totalValue = Math.round(totalValue * 100) / 100.0;
         System.out.println("Train values: ");
         System.out.println("Total Weight: " + totalWeight);
         System.out.println("Total Value: $" + totalValue);
