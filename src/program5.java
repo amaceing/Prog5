@@ -346,7 +346,7 @@ class Train {
                 System.out.println("This car's weight is greater than the weight allowed" +
                                    " to go over the bridge!");
             }
-            System.out.println("Total Value: " + car.computeTotalValue());
+            System.out.println("Total Value: $" + car.computeTotalValue());
             System.out.println();
         }
     }
@@ -365,7 +365,7 @@ class Train {
         totalWeight += _engine.getBaseFrameWeight();
         System.out.println("Train values: ");
         System.out.println("Total Weight: " + totalWeight);
-        System.out.println("Total Value: " + totalValue);
+        System.out.println("Total Value: $" + totalValue);
         System.out.println("Number of Cars: " + carCount);
         if (totalWeight > _engine.getPullingCapacity()) {
             System.out.println("The train's total weight is greater than " +
