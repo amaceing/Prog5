@@ -15,12 +15,7 @@ public class program5 {
         Contents contents = null;
         FreightCar car = null;
         Train train = null;
-        Contents[] contentsArray = new Contents[5];
-        contentsArray[0] = new Contents("Oil", 55, 7.85);
-        contentsArray[1] = new Contents("Coal", 69, 50);
-        contentsArray[2] = new Contents("Soybeans", 47, 2.72);
-        contentsArray[3] = new Contents("Lineseed, meal", 32, 0.07);
-        contentsArray[4] = new Contents("Oats", 27, 1.30);
+        Contents[] contentsArray = createContentsArray();
         printIntro();
         System.out.println();
         railCond = getRailConditions();
@@ -76,6 +71,16 @@ public class program5 {
         System.out.println();
         System.out.println("Let's build a train!");
         return maxLoad;
+    }
+
+    public static Contents[] createContentsArray() {
+        Contents[] contentsArray = new Contents[5];
+        contentsArray[0] = new Contents("Oil", 55, 7.85);
+        contentsArray[1] = new Contents("Coal", 69, 50);
+        contentsArray[2] = new Contents("Soybeans", 47, 2.72);
+        contentsArray[3] = new Contents("Lineseed, meal", 32, 0.07);
+        contentsArray[4] = new Contents("Oats", 27, 1.30);
+        return contentsArray;
     }
 
     //Constructs an engine from user input
@@ -237,17 +242,7 @@ public class program5 {
             System.out.print("Contents choice: ");
             contentsChoice = console.nextInt();
         }
-        if (contentsChoice == 1) {
-            contents = contentsArray[0];
-        } else if (contentsChoice == 2) {
-            contents = contentsArray[1];
-        } else if (contentsChoice == 3) {
-            contents = contentsArray[2];
-        } else if (contentsChoice == 4) {
-            contents = contentsArray[3];
-        } else if (contentsChoice == 5) {
-            contents = contentsArray[4];
-        }
+        contents = contentsArray[contentsChoice - 1];
         return contents;
     }
 
@@ -358,18 +353,9 @@ class Train {
     //Displays the train's total weight and
     //value
     public void trainWeightAndValue() {
-        double totalWeight = 0.0;
-        double totalValue = 0.0;
+        double totalWeight = computeTotalWeight();
+        double totalValue = computeTotalValue();
         int carCount = 0;
-        for (FreightCar car: _freightCars) {
-            totalWeight += car.computeTotalWeight();
-            totalValue += car.computeTotalValue();
-            carCount++;
-        }
-        totalWeight += _engine.getBaseFrameWeight();
-        //To round numbers to two decimals
-        totalWeight = Math.round(totalWeight * 100) / 100.0;
-        totalValue = Math.round(totalValue * 100) / 100.0;
         System.out.println("Train values: ");
         System.out.println("Total Weight: " + totalWeight);
         System.out.println("Total Value: $" + totalValue);
@@ -378,6 +364,25 @@ class Train {
             System.out.println("The train's total weight is greater than " +
                     "the engine's pulling capacity!");
         }
+    }
+
+    public double computeTotalWeight() {
+        double totalWeight = 0.0;
+        totalWeight += _engine.getBaseFrameWeight();
+        for (FreightCar car: _freightCars) {
+            totalWeight += car.computeTotalWeight();
+        }
+        totalWeight = Math.round(totalWeight * 100) / 100.0;
+        return totalWeight;
+    }
+
+    public double computeTotalValue() {
+        double totalValue = 0.0;
+        for (FreightCar car: _freightCars) {
+            totalValue += car.computeTotalValue();
+        }
+        totalValue = Math.round(totalValue * 100) / 100.0;
+        return totalValue;
     }
 
     //Prints out every detail of the train
@@ -469,15 +474,13 @@ class FreightCar extends RollingStock {
     public double computeTotalWeight() {
         double totalWeight = 0.0;
         totalWeight = (_container.wallWeight() + super.getBaseFrameWeight()) +
-                      (_contents.getDensity() *
-                      (_container.computeInteriorVolume() * _loadFactor));
+                      computeWeight();
         return totalWeight;
     }
 
     public double computeTotalValue() {
         double totalValue = 0.0;
-        totalValue = _contents.getValue() * ((_container.computeInteriorVolume() *
-                                            _loadFactor) * _contents.getDensity());
+        totalValue = _contents.getValue() * computeWeight();
         return totalValue;
     }
 
@@ -486,6 +489,13 @@ class FreightCar extends RollingStock {
                "Contents: " + _contents.getType() + "\n" +
                "Container: " + _container + "\n" +
                "Load factor: " + _loadFactor * 100.0 + "%";
+    }
+
+    private double computeWeight() {
+        double weight = 0.0;
+        weight = (_contents.getDensity() * (_container.computeInteriorVolume()
+                 * _loadFactor));
+        return weight;
     }
 }
 
